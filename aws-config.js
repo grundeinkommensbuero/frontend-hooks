@@ -1,3 +1,7 @@
+if (!process.env.API_URL) {
+  console.log('No API_URL provided as env variable');
+}
+
 export default {
   COGNITO: {
     REGION: 'eu-central-1',
@@ -7,9 +11,6 @@ export default {
         : 'eu-central-1_xx4VmPPdF',
   },
   API: {
-    INVOKE_URL:
-      process.env.NODE_ENV === 'development'
-        ? 'https://2j0bcp5tr9.execute-api.eu-central-1.amazonaws.com/dev'
-        : 'https://ag5gu1z06h.execute-api.eu-central-1.amazonaws.com/prod',
+    INVOKE_URL: process.env.API_URL, // Needs to be provided in frontend using this package
   },
 };
