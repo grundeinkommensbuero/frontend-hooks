@@ -21,11 +21,11 @@
   "license": "MIT",
   "peerDependencies": {
     "@aws-amplify/auth": "^3.4.6",
-    "react": ">= 16.8.0",
-    "@xbge/hooks": "^1.0.0"
+    "@xbge/hooks": "^1.0.0",
+    "react": ">= 16.8.0"
   },
   "devDependencies": {
-    "rollup": "^2.28.2"
+    "rollup": "^2.29.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
