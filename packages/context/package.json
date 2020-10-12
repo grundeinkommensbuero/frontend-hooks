@@ -34,6 +34,5 @@
     "@babel/runtime": "^7.11.2",
     "js-cookie": "^2.2.1",
     "query-string": "^5.1.1"
-  },
-  "gitHead": "fa115c1fb7a945e0bece3cff698a2f3f50ae0a74"
+  }
 }
