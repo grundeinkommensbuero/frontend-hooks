@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import querystring from 'query-string';
 
-import { getCurrentUser, getUser } from 'hooks';
-import { useLocalStorageUser, signOut } from 'hooks';
+import { getCurrentUser, getUser } from '@xbge/hooks';
+import { useLocalStorageUser, signOut } from '@xbge/hooks';
 
 /**
  * This class serves as a provider (reacts context API) which is used

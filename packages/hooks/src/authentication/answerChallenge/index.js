@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { AuthContext } from 'context';
+import { AuthContext } from '@xbge/context';
 
 export const useAnswerChallenge = () => {
   const [state, setState] = useState({});

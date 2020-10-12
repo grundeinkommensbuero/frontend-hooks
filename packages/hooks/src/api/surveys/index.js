@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { AuthContext } from 'context';
+import { AuthContext } from '@xbge/context';
 import CONFIG from '../../../../../aws-config';
 
 /*

@@ -4,7 +4,7 @@
 
 import CONFIG from '../../../../../../aws-config';
 import { useState, useContext } from 'react';
-import { AuthContext } from 'context';
+import { AuthContext } from '@xbge/context';
 
 export const useCreatePledge = () => {
   // we are calling useState to 1) return the state and 2) pass the setState function

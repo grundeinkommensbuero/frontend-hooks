@@ -5,7 +5,7 @@ import { sleep, getReferral, getRandomString } from '../utils';
 import { useContext, useState } from 'react';
 import querystring from 'query-string';
 import { navigate } from '@reach/router';
-import { AuthContext } from 'context';
+import { AuthContext } from '@xbge/context';
 import { createUser } from '../Api/Users/Create';
 
 export { useAnswerChallenge } from './AnswerChallenge';

@@ -5,7 +5,7 @@
 
 import { useState, useContext } from 'react';
 import CONFIG from '../../../../../../aws-config';
-import { AuthContext } from 'context';
+import { AuthContext } from '@xbge/context';
 
 /*
   States:

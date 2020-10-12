@@ -34,5 +34,11 @@ export default {
     json(),
     commonjs(),
   ],
-  external: ['react', 'react-dom', /@babel\/runtime/, '@aws-amplify/auth'],
+  external: [
+    'react',
+    'react-dom',
+    /@babel\/runtime/,
+    '@aws-amplify/auth',
+    '@xbge/context',
+  ],
 };

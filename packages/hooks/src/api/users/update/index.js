@@ -1,7 +1,7 @@
 import CONFIG from '../../../../../../aws-config';
 import { useState, useContext } from 'react';
 import { saveUser } from '../shared';
-import { AuthContext } from 'context';
+import { AuthContext } from '@xbge/context';
 
 export const useUpdateUser = () => {
   const [state, setState] = useState();

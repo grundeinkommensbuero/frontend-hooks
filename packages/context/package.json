@@ -1,6 +1,6 @@
 {
-  "name": "context",
-  "version": "0.0.1",
+  "name": "@xbge/context",
+  "version": "1.0.0",
   "description": "This package holds the contexts to be used by the Direkte Demokratie Digital organizing tool.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -20,8 +20,9 @@
   "author": "Tatiana Schär, Valentin Schagerl",
   "license": "MIT",
   "peerDependencies": {
+    "@aws-amplify/auth": "^3.4.6",
     "react": ">= 16.8.0",
-    "@aws-amplify/auth": "^3.4.6"
+    "@xbge/hooks": "^1.0.0"
   },
   "devDependencies": {
     "rollup": "^2.28.2"
