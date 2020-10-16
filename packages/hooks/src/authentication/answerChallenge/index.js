@@ -7,7 +7,11 @@ export const useAnswerChallenge = () => {
   //get global context
   const context = useContext(AuthContext);
 
-  return [state, answer => answerCustomChallenge(answer, setState, context)];
+  return [
+    state,
+    answer => answerCustomChallenge(answer, setState, context),
+    setState,
+  ];
 };
 
 // Function to send login code to aws
@@ -19,7 +23,9 @@ const answerCustomChallenge = async (
   // Send the answer to the User Pool
   try {
     setState('loading');
-    const { default: Auth } = await import('@aws-amplify/auth');
+    const { default: Auth } = await import(
+      /* webpackChunkName: "Amplify" */ '@aws-amplify/auth'
+    );
 
     // sendCustomChallengeAnswer() will throw an error if it’s the 3rd wrong answer
     const tempUser = await Auth.sendCustomChallengeAnswer(cognitoUser, answer);

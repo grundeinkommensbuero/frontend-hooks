@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   const [customUserData, setCustomUserData] = useState({});
   const [token, setToken] = useState();
   const [tempEmail, setTempEmail] = useState();
+  const [previousAction, setPreviousAction] = useState();
   const [userId, setUserId] = useLocalStorageUser();
 
   const signUserOut = async () =>
@@ -55,18 +56,20 @@ export const AuthProvider = ({ children }) => {
     else {
       if (typeof window !== `undefined`) {
         // Check if the user is already signed in
-        import('@aws-amplify/auth').then(({ default: Amplify }) => {
-          Amplify.currentAuthenticatedUser()
-            .then(user => {
-              if (user) {
-                setCognitoUser(user);
-              }
-            }) // set user in context (global state)
-            .catch(() => {
-              //error is thrown if user is not authenticated
-              setIsAuthenticated(false);
-            });
-        });
+        import(/* webpackChunkName: "Amplify" */ '@aws-amplify/auth').then(
+          ({ default: Amplify }) => {
+            Amplify.currentAuthenticatedUser()
+              .then(user => {
+                if (user) {
+                  setCognitoUser(user);
+                }
+              }) // set user in context (global state)
+              .catch(() => {
+                //error is thrown if user is not authenticated
+                setIsAuthenticated(false);
+              });
+          }
+        );
       }
     }
   }, []);
@@ -84,9 +87,9 @@ export const AuthProvider = ({ children }) => {
     }
   }, [cognitoUser]);
 
+  // Getting user data from backend
   useEffect(() => {
     if (userId && isAuthenticated !== undefined) {
-      // Update user data with data from backend
       updateCustomUserData({
         isAuthenticated,
         token,
@@ -111,6 +114,8 @@ export const AuthProvider = ({ children }) => {
         tempEmail,
         setTempEmail,
         customUserData,
+        previousAction,
+        setPreviousAction,
       }}
     >
       {children}

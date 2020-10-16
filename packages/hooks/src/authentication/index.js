@@ -39,12 +39,24 @@ export const useSignOut = () => {
   return () => signOut(context);
 };
 
+// This hook signs the user out of amplify session,
+// while keeping the user in the identified state (keeping user id in context).
+// Same as sign out hook we only return the function.
+export const useBounceToIdentifiedState = () => {
+  //get global context
+  const context = useContext(AuthContext);
+
+  return () => bounceToIdentifiedState(context);
+};
+
 // Amplifys Auth class is used to sign up user
 const signUp = async (data, setState, { setUserId, setTempEmail }) => {
   try {
     setState('loading');
 
-    const { default: Auth } = await import('@aws-amplify/auth');
+    const { default: Auth } = await import(
+      /* webpackChunkName: "Amplify" */ '@aws-amplify/auth'
+    );
 
     // We have to “generate” a password for them, because a password is required by Amazon Cognito when users sign up
     const { userSub: userId } = await Auth.signUp({
@@ -83,7 +95,11 @@ const signUp = async (data, setState, { setUserId, setTempEmail }) => {
 // Sign in user through AWS Cognito (passwordless)
 const signIn = async (setState, { setCognitoUser, userId, tempEmail }) => {
   try {
-    const { default: Auth } = await import('@aws-amplify/auth');
+    setState('loading');
+
+    const { default: Auth } = await import(
+      /* webpackChunkName: "Amplify" */ '@aws-amplify/auth'
+    );
 
     // This will initiate the custom flow, which will lead to the user receiving a mail.
     // The code will timeout after 3 minutes (enforced server side by AWS Cognito).
@@ -111,9 +127,13 @@ export const signOut = async ({
   setUserId,
   setIsAuthenticated,
   setToken,
+  setTempEmail,
+  setPreviousAction,
 }) => {
   try {
-    const { default: Auth } = await import('@aws-amplify/auth');
+    const { default: Auth } = await import(
+      /* webpackChunkName: "Amplify" */ '@aws-amplify/auth'
+    );
 
     await Auth.signOut();
 
@@ -130,8 +150,33 @@ export const signOut = async ({
     setUserId(undefined);
     setToken(undefined);
     setIsAuthenticated(false);
+    setTempEmail(undefined);
+    setPreviousAction('signOut');
     return;
   } catch (error) {
     console.log('Error while signing out', error);
+  }
+};
+
+// This function signs the user out of amplify session,
+// while keeping the user in the identified state (keeping user id in context)
+const bounceToIdentifiedState = async ({
+  setCognitoUser,
+  setToken,
+  setIsAuthenticated,
+}) => {
+  try {
+    const { default: Auth } = await import(
+      /* webpackChunkName: "Amplify" */ '@aws-amplify/auth'
+    );
+
+    await Auth.signOut();
+
+    // Update user state
+    setCognitoUser(null);
+    setToken(undefined);
+    setIsAuthenticated(false);
+  } catch (error) {
+    console.log('Error while bouncing user to identified state', error);
   }
 };
