@@ -24,7 +24,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@aws-amplify/auth": "^3.4.6",
-    "@xbge/hooks": "^1.0.0",
+    "@xbge/hooks": "1.0.x",
     "react": ">= 16.8.0"
   },
   "devDependencies": {
