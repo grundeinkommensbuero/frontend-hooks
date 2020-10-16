@@ -48,6 +48,7 @@ export {
   useSignOut,
   useSignUp,
   useVerification,
+  useBounceToIdentifiedState,
 } from './authentication';
 
 // Image upload hooks
