@@ -1,6 +1,6 @@
 {
   "name": "@xbge/hooks",
-  "version": "1.0.7-alpha.0",
+  "version": "1.0.7-alpha.1",
   "description": "This package holds the hooks to be used by the Direkte Demokratie Digital organizing tool.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
