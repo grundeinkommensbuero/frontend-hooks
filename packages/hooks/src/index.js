@@ -5,6 +5,9 @@
  * package.
  */
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 // Signatures and signature lists hooks
 export {
   useSignatureCount,
