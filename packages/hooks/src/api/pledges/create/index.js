@@ -2,7 +2,6 @@
  *  This file holds a hook to create a pledge
  */
 
-import CONFIG from '../../../../../../aws-config';
 import { useState, useContext } from 'react';
 import { AuthContext } from '@xbge/context';
 
@@ -38,7 +37,7 @@ const createPledge = async (userId, pledge, setState) => {
     };
 
     const response = await fetch(
-      `${CONFIG.API.INVOKE_URL}/users/${userId}/pledges`,
+      `${process.env.API_URL}/users/${userId}/pledges`,
       request
     );
 

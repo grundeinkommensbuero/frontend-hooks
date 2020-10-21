@@ -5,7 +5,6 @@
  */
 
 import { useState } from 'react';
-import CONFIG from '../../../../../../aws-config';
 
 /*
   States:
@@ -78,7 +77,7 @@ const getSignatureCount = async () => {
     };
 
     const response = await fetch(
-      `${CONFIG.API.INVOKE_URL}/analytics/signatures`,
+      `${process.env.API_URL}/analytics/signatures`,
       request
     );
 
@@ -122,7 +121,7 @@ const getSignatureCountOfUser = async ({ listId, userId, email }) => {
     }
 
     const response = await fetch(
-      `${CONFIG.API.INVOKE_URL}/analytics/signatures?${queryParam}`,
+      `${process.env.API_URL}/analytics/signatures?${queryParam}`,
       request
     );
 

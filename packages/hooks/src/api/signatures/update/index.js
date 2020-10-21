@@ -5,7 +5,6 @@
  */
 
 import { useState } from 'react';
-import CONFIG from '../../../../../../aws-config';
 
 /*
   States:
@@ -58,7 +57,7 @@ const updateSignatureListByUser = async (
     };
 
     const response = await fetch(
-      `${CONFIG.API.INVOKE_URL}/signatures/${listId}`,
+      `${process.env.API_URL}/signatures/${listId}`,
       request
     );
 

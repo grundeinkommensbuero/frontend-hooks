@@ -1,9 +1,8 @@
-import CONFIG from '../../../../../../aws-config';
 import { saveUser } from '../shared';
 
 //Makes api call to update user in db, throws error if unsuccessful
 export const createUser = async ({ newsletterConsent, ...data }) => {
-  const url = `${CONFIG.API.INVOKE_URL}/users`;
+  const url = `${process.env.API_URL}/users`;
 
   // If newsletter consent was not passed (because e.g. checkbox was not clicked),
   // set it to false

@@ -4,7 +4,6 @@
  */
 
 import { useState, useContext } from 'react';
-import CONFIG from '../../../../../../aws-config';
 import { updateUser } from '../../Users/Update';
 import { AuthContext } from '@xbge/context';
 
@@ -126,7 +125,7 @@ const makeApiCall = async (data, shouldNotUpdateUser, userId, token) => {
     ? `/users/${userId}/signatures`
     : '/signatures';
 
-  const response = await fetch(`${CONFIG.API.INVOKE_URL}${endpoint}`, request);
+  const response = await fetch(`${process.env.API_URL}${endpoint}`, request);
   const json = await response.json();
 
   // Status might also be 200 in case there already was an existing pdf

@@ -4,7 +4,6 @@
  */
 
 import { useState, useContext } from 'react';
-import CONFIG from '../../../../../../aws-config';
 import { AuthContext } from '@xbge/context';
 
 /*
@@ -39,7 +38,7 @@ export const getUser = async userId => {
     };
 
     const response = await fetch(
-      `${CONFIG.API.INVOKE_URL}/users/${userId}`,
+      `${process.env.API_URL}/users/${userId}`,
       request
     );
 
@@ -80,7 +79,7 @@ export const getCurrentUser = async token => {
       },
     };
 
-    const response = await fetch(`${CONFIG.API.INVOKE_URL}/users/me`, request);
+    const response = await fetch(`${process.env.API_URL}/users/me`, request);
 
     if (response.status === 200) {
       const json = await response.json();

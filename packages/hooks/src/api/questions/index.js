@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import CONFIG from '../../../../../aws-config';
 
 /*
   States:
@@ -45,7 +44,7 @@ const saveQuestion = async (
     };
 
     const response = await fetch(
-      `${CONFIG.API.INVOKE_URL}/users/${userId}/questions`,
+      `${process.env.API_URL}/users/${userId}/questions`,
       request
     );
 
@@ -88,7 +87,7 @@ const getMostRecentQuestions = async (
     };
 
     const response = await fetch(
-      `${CONFIG.API.INVOKE_URL}/questions?limit=${limit}&userId=${userId}`,
+      `${process.env.API_URL}/questions?limit=${limit}&userId=${userId}`,
       request
     );
 

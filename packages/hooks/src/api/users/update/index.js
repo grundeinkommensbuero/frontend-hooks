@@ -1,4 +1,3 @@
-import CONFIG from '../../../../../../aws-config';
 import { useState, useContext } from 'react';
 import { saveUser } from '../shared';
 import { AuthContext } from '@xbge/context';
@@ -27,7 +26,7 @@ export const useUpdateUser = () => {
 
 //Makes api call to update user in db, throws error if unsuccessful
 export const updateUser = async ({ userId, token, ...data }) => {
-  const url = `${CONFIG.API.INVOKE_URL}/users/${userId}`;
+  const url = `${process.env.API_URL}/users/${userId}`;
 
   const response = await saveUser({
     method: 'PATCH',

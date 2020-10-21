@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import CONFIG from '../../../../aws-config';
 
 export const useUploadImage = () => {
   const [state, setState] = useState({});
@@ -42,7 +41,7 @@ const requestPresignedUrl = async (userId, contentType) => {
   };
 
   const response = await fetch(
-    `${CONFIG.API.INVOKE_URL}/images/upload-url`,
+    `${process.env.API_URL}/images/upload-url`,
     request
   );
 

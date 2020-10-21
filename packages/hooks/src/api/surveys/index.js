@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '@xbge/context';
-import CONFIG from '../../../../../aws-config';
 
 /*
   States:
@@ -43,7 +42,7 @@ export const saveSurveyAnswer = async (surveyCode, answer, userId) => {
       };
 
       const response = await fetch(
-        `${CONFIG.API.INVOKE_URL}/users/${userId}/surveys`,
+        `${process.env.API_URL}/users/${userId}/surveys`,
         request
       );
 
