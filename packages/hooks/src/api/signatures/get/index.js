@@ -76,8 +76,6 @@ const getSignatureCount = async () => {
       },
     };
 
-    console.log('api url', process.env.API_URL);
-
     const response = await fetch(
       `${process.env.API_URL}/analytics/signatures`,
       request
