@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "xbge-modules",
   "description": "This monorepo holds the hooks, contexts and component to be used by the Direkte Demokratie Digital organizing tool.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grundeinkommensbuero/frontend-hooks.git"
+    "url": "git+https://github.com/grundeinkommensbuero/modules.git"
   },
   "keywords": [
     "direct-democracy",
@@ -18,9 +18,9 @@
   "author": "Tatiana Schär, Valentin Schagerl",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/grundeinkommensbuero/frontend-hooks/issues"
+    "url": "https://github.com/grundeinkommensbuero/modules/issues"
   },
-  "homepage": "https://github.com/grundeinkommensbuero/frontend-hooks#readme",
+  "homepage": "https://github.com/grundeinkommensbuero/modules#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-transform-runtime": "^7.11.5",
