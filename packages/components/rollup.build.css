@@ -1,0 +1,9 @@
+.container {
+  display: block;
+}
+.error {
+  margin-top: 0.2rem;
+}
+.tooltip {
+  font-size: 1.15rem;
+}
