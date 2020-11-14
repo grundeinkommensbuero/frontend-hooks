@@ -5,6 +5,7 @@ import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import image from '@rollup/plugin-image';
 import css from 'rollup-plugin-css-only';
+import csv from '@rollup/plugin-dsv';
 
 import pkg from './package.json';
 import babelConfig from '../../babel.config.json';
@@ -36,6 +37,7 @@ export default {
     resolve({ preferBuiltins: false }),
     css(),
     less(),
+    csv(),
     json(),
     image(),
     commonjs(),
@@ -48,5 +50,7 @@ export default {
     'gatsby-image',
     /@babel\/runtime/,
     '@aws-amplify/auth',
+    'html2plaintext',
+    'canvas-confetti'
   ],
 };

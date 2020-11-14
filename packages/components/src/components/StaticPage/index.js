@@ -1,12 +1,116 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '../Layout';
 import { Helmet } from 'react-helmet-async';
 import MatomoTrackingStuff from './MatomoTrackingStuff';
 
 const URL = 'https://expedition-grundeinkommen.de';
 
-export default ({ data, location }) => {
+export default ({ location }) => {
+  const data = useStaticQuery(graphql`
+    query StaticPageBySlug($slug: String!) {
+      contentfulStaticContent(slug: { eq: $slug }) {
+        title
+        description {
+          internal {
+            content
+          }
+        }
+        sections {
+          ... on Node {
+            ... on ContentfulPageSection {
+              __typename
+              title
+              titleShort
+              campainVisualisations {
+                campainCode
+                goal
+                startDate
+                title
+                minimum
+                maximum
+                addToSignatureCount
+                ctaLink
+                eyeCatcher {
+                  json
+                }
+                goalUnbuffered
+                goalInbetweenMultiple
+                startnextId
+                hint {
+                  hint
+                }
+              }
+              body {
+                json
+              }
+              maps {
+                name
+                state
+                config {
+                  bounds
+                }
+              }
+              callToActionLink
+              callToActionText
+              bodyTextSizeHuge
+              signUpForm
+              emailSignup
+              pledgeId
+              signaturesId
+              disableRequestListsByMail
+              callToActionReference {
+                slug
+                title
+                shortTitle
+              }
+              teamMembers {
+                image {
+                  fluid(maxWidth: 200, quality: 80) {
+                    ...GatsbyContentfulFluid
+                  }
+                }
+                name
+                twitter
+                linkedin
+                website
+                role
+              }
+              twitterFeed
+              backgroundIllustration
+              socialMediaButtons
+              blogTeaser
+              questionUbi
+              bodyAtTheEnd {
+                json
+              }
+            }
+            ... on ContentfulPageSectionVideo {
+              __typename
+              videoLink
+            }
+            ... on ContentfulPageSectionIllustration {
+              __typename
+              sloganLine1
+              sloganLine2
+            }
+            ... on ContentfulPageSectionIntro {
+              __typename
+              preTitle
+              title
+              subTitle
+              backgroundImage {
+                fluid(maxWidth: 1500, quality: 80) {
+                  ...GatsbyContentfulFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+
   const page = data.contentfulStaticContent;
 
   return (
@@ -27,107 +131,3 @@ export default ({ data, location }) => {
     </Layout>
   );
 };
-
-export const pageQuery = graphql`
-  query StaticPageBySlug($slug: String!) {
-    contentfulStaticContent(slug: { eq: $slug }) {
-      title
-      description {
-        internal {
-          content
-        }
-      }
-      sections {
-        ... on Node {
-          ... on ContentfulPageSection {
-            __typename
-            title
-            titleShort
-            campainVisualisations {
-              campainCode
-              goal
-              startDate
-              title
-              minimum
-              maximum
-              addToSignatureCount
-              ctaLink
-              eyeCatcher {
-                json
-              }
-              goalUnbuffered
-              goalInbetweenMultiple
-              startnextId
-              hint {
-                hint
-              }
-            }
-            body {
-              json
-            }
-            maps {
-              name
-              state
-              config {
-                bounds
-              }
-            }
-            callToActionLink
-            callToActionText
-            bodyTextSizeHuge
-            signUpForm
-            emailSignup
-            pledgeId
-            signaturesId
-            disableRequestListsByMail
-            callToActionReference {
-              slug
-              title
-              shortTitle
-            }
-            teamMembers {
-              image {
-                fluid(maxWidth: 200, quality: 80) {
-                  ...GatsbyContentfulFluid
-                }
-              }
-              name
-              twitter
-              linkedin
-              website
-              role
-            }
-            twitterFeed
-            backgroundIllustration
-            socialMediaButtons
-            blogTeaser
-            questionUbi
-            bodyAtTheEnd {
-              json
-            }
-          }
-          ... on ContentfulPageSectionVideo {
-            __typename
-            videoLink
-          }
-          ... on ContentfulPageSectionIllustration {
-            __typename
-            sloganLine1
-            sloganLine2
-          }
-          ... on ContentfulPageSectionIntro {
-            __typename
-            preTitle
-            title
-            subTitle
-            backgroundImage {
-              fluid(maxWidth: 1500, quality: 80) {
-                ...GatsbyContentfulFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;

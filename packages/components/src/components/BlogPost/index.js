@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Layout from '../Layout';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -13,14 +13,52 @@ import { formatDate } from '../utils';
 import OGImage from './blog_og.png';
 import html2plaintext from 'html2plaintext';
 
-export default ({
-  data: {
+export default ({ location }) => {
+  const data = seStaticQuery(graphql`
+    query WordpressPostByPath($path: String!) {
+      wordpressPost(path: { eq: $path }) {
+        title
+        content
+        excerpt
+        date
+        featured_media {
+          localFile {
+            childImageSharp {
+              hero: fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_noBase64
+              }
+              og: fixed(width: 1200, quality: 90) {
+                src
+              }
+            }
+          }
+          path
+        }
+        tags {
+          id
+        }
+      }
+      allWordpressTag {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
+
+      contentfulGlobalStuff(contentful_id: { eq: "3mMymrVLEHYrPI9b6wgBzg" }) {
+        siteTitle
+      }
+    }
+  `);
+
+  const {
     wordpressPost: { title, content, featured_media, date, tags, excerpt },
     allWordpressTag,
     contentfulGlobalStuff: { siteTitle },
-  },
-  location,
-}) => {
+  } = data;
+
   const dateObject = new Date(date);
   const tagList = allWordpressTag.edges.reduce((list, tag) => {
     list[tag.node.id] = tag.node.name;
@@ -88,42 +126,3 @@ export default ({
     </Layout>
   );
 };
-
-export const pageQuery = graphql`
-  query WordpressPostByPath($path: String!) {
-    wordpressPost(path: { eq: $path }) {
-      title
-      content
-      excerpt
-      date
-      featured_media {
-        localFile {
-          childImageSharp {
-            hero: fluid(maxWidth: 2000) {
-              ...GatsbyImageSharpFluid_noBase64
-            }
-            og: fixed(width: 1200, quality: 90) {
-              src
-            }
-          }
-        }
-        path
-      }
-      tags {
-        id
-      }
-    }
-    allWordpressTag {
-      edges {
-        node {
-          id
-          name
-        }
-      }
-    }
-
-    contentfulGlobalStuff(contentful_id: { eq: "3mMymrVLEHYrPI9b6wgBzg" }) {
-      siteTitle
-    }
-  }
-`;

@@ -1,9 +1,29 @@
-.container {
-  display: block;
+.article {
+  margin-top: 2rem;
 }
-.error {
-  margin-top: 0.2rem;
+.article + .article {
+  margin-top: 8rem;
 }
-.tooltip {
-  font-size: 1.15rem;
+@media (max-width: 500px) {
+  .article {
+    margin-top: 4rem;
+  }
+}
+.title {
+  margin: 1rem 0;
+}
+.title a {
+  text-decoration: none;
+}
+.title a:hover {
+  text-decoration: none;
+  box-shadow: 0 0.1em currentColor;
+  border-bottom: 0.05em transparent solid;
+}
+.body {
+  font-weight: normal;
+}
+.image {
+  max-height: 17rem;
+  filter: grayscale(1);
 }
