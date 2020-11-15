@@ -14,7 +14,7 @@ import OGImage from './blog_og.png';
 import html2plaintext from 'html2plaintext';
 
 export default ({ location }) => {
-  const data = seStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query WordpressPostByPath($path: String!) {
       wordpressPost(path: { eq: $path }) {
         title

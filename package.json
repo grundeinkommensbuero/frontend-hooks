@@ -22,17 +22,6 @@
   },
   "homepage": "https://github.com/grundeinkommensbuero/modules#readme",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-transform-runtime": "^7.11.5",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "@rollup/plugin-babel": "^5.2.1",
-    "@rollup/plugin-commonjs": "^15.1.0",
-    "@rollup/plugin-dsv": "^2.0.1",
-    "@rollup/plugin-image": "^2.0.5",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
@@ -41,9 +30,6 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "lerna": "^3.22.1",
-    "prettier": "^2.1.2",
-    "react": "^16.13.1",
-    "rollup-plugin-css-only": "^2.1.0",
-    "rollup-plugin-less": "^1.1.2"
+    "prettier": "^2.1.2"
   }
 }

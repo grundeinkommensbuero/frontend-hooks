@@ -4,7 +4,10 @@ import cN from 'classnames';
 let canvasConfetti;
 
 if (!process.env.STATIC) {
-  canvasConfetti = require('canvas-confetti');
+  console.log('about to require confetti', process.env.STATIC, typeof window);
+  if (typeof window !== 'undefined') {
+    canvasConfetti = require('canvas-confetti');
+  }
 }
 
 const colors = [
