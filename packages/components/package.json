@@ -1,6 +1,6 @@
 {
   "name": "@xbge/gatsby-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This package holds the components to be used by the Direkte Demokratie Digital organizing tool.",
   "main": "src/index.js",
   "scripts": {
@@ -21,8 +21,8 @@
   "author": "Tatiana Schär, Valentin Schagerl",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">= 16.8.0",
-    "@aws-amplify/auth": ">= 3.4.6"
+    "@aws-amplify/auth": ">= 3.4.6",
+    "react": ">= 16.8.0"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.1",
